@@ -15,7 +15,7 @@ using var connection = factory.CreateConnection();
 var channel = connection.CreateModel();
 
 //kuyruğun oluşturulması
-channel.QueueDeclare("hello-queue", true, false, false);
+channel.QueueDeclare("hello-queue", true, false, false); 
 
 Enumerable.Range(1, 50).ToList().ForEach(x => {
     string message = $"Message {x}"; 
