@@ -11,14 +11,18 @@ using var connection = factory.CreateConnection();
 
 //kanalın oluşturulması
 var channel = connection.CreateModel();
+channel.ExchangeDeclare("header-exchange", durable: true, type: ExchangeType.Headers);
 
 channel.BasicQos(0, 1, false);
 var consumer = new EventingBasicConsumer(channel);
 var queueName = channel.QueueDeclare().QueueName;
+Dictionary<string,object> headers = new Dictionary<string, object>();
 
-//channel.ExchangeDeclare("logs-topic", durable: true, type: ExchangeType.Topic);
-var routeKey = "Info.#";
-channel.QueueBind(queueName, "logs-topic", routeKey, null);
+headers.Add("format", "pdf");
+headers.Add("shape", "a4");
+headers.Add("x-match", "any");
+
+channel.QueueBind(queueName, "header-exchange",string.Empty,headers);
 
 channel.BasicConsume(queueName, false, consumer);
 Console.WriteLine("Loglar dinleniyor.");
@@ -27,7 +31,6 @@ consumer.Received += (sender, args) =>
     var message = Encoding.UTF8.GetString(args.Body.ToArray());
     Console.WriteLine("Gelen mesaj : " + message);
 
-    //File.AppendAllText("log-critical.txt", message+ "\n");
 
     Thread.Sleep(500);
     channel.BasicAck(args.DeliveryTag, false);
