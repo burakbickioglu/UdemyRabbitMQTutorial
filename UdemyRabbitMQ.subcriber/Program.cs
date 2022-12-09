@@ -12,11 +12,13 @@ using var connection = factory.CreateConnection();
 //kanalın oluşturulması
 var channel = connection.CreateModel();
 
-
 channel.BasicQos(0, 1, false);
-
 var consumer = new EventingBasicConsumer(channel);
-var queueName = "direct-queue-Critical";
+var queueName = channel.QueueDeclare().QueueName;
+
+//channel.ExchangeDeclare("logs-topic", durable: true, type: ExchangeType.Topic);
+var routeKey = "Info.#";
+channel.QueueBind(queueName, "logs-topic", routeKey, null);
 
 channel.BasicConsume(queueName, false, consumer);
 Console.WriteLine("Loglar dinleniyor.");
@@ -27,7 +29,7 @@ consumer.Received += (sender, args) =>
 
     //File.AppendAllText("log-critical.txt", message+ "\n");
 
-    Thread.Sleep(1000);
+    Thread.Sleep(500);
     channel.BasicAck(args.DeliveryTag, false);
 };
 
