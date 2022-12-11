@@ -12,7 +12,7 @@ var factory = new ConnectionFactory();
 factory.HostName = "localhost";
 //bağlantının kurulması
 using var connection = factory.CreateConnection();
-
+ 
 //kanalın oluşturulması
 var channel = connection.CreateModel();
 
