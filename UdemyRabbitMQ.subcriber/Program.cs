@@ -1,6 +1,8 @@
 ﻿using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
+using Shared;
 using System.Text;
+using System.Text.Json;
 
 var factory = new ConnectionFactory();
 //factory.Uri = new Uri("amqps://kozfvhtn:eRpeWdWSmW91rQ-DFvwVYnVpwsNfEF9j@woodpecker.rmq.cloudamqp.com/kozfvhtn");
@@ -21,7 +23,6 @@ Dictionary<string,object> headers = new Dictionary<string, object>();
 headers.Add("format", "pdf");
 headers.Add("shape", "a4");
 headers.Add("x-match", "any");
-
 channel.QueueBind(queueName, "header-exchange",string.Empty,headers);
 
 channel.BasicConsume(queueName, false, consumer);
@@ -29,7 +30,9 @@ Console.WriteLine("Loglar dinleniyor.");
 consumer.Received += (sender, args) =>
 {
     var message = Encoding.UTF8.GetString(args.Body.ToArray());
-    Console.WriteLine("Gelen mesaj : " + message);
+    Product product = JsonSerializer.Deserialize<Product>(message);
+
+    Console.WriteLine($"Gelen mesaj : + { product.Id}-{product.Name}-{product.Price}-{product.Stock}");
 
 
     Thread.Sleep(500);

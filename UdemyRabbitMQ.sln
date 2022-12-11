@@ -3,9 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33122.133
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UdemyRabbitMQ.publisher", "UdemyRabbitMQ.publisher\UdemyRabbitMQ.publisher.csproj", "{90428782-7065-4E0E-BB62-5DEDF2B54AC3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UdemyRabbitMQ.publisher", "UdemyRabbitMQ.publisher\UdemyRabbitMQ.publisher.csproj", "{90428782-7065-4E0E-BB62-5DEDF2B54AC3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UdemyRabbitMQ.subcriber", "UdemyRabbitMQ.subcriber\UdemyRabbitMQ.subcriber.csproj", "{6F747385-8EF4-4830-B459-990CB052A322}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UdemyRabbitMQ.subcriber", "UdemyRabbitMQ.subcriber\UdemyRabbitMQ.subcriber.csproj", "{6F747385-8EF4-4830-B459-990CB052A322}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shared", "Shared\Shared.csproj", "{2B214199-EBD2-4D33-8BEF-13FA99C3F378}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UdemyRabbitMQWEB.Watermark", "UdemyRabbitMQWEB.Watermark\UdemyRabbitMQWEB.Watermark.csproj", "{9A305CDB-491E-4C39-84A5-B6D1196BC88F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +25,14 @@ Global
 		{6F747385-8EF4-4830-B459-990CB052A322}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6F747385-8EF4-4830-B459-990CB052A322}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6F747385-8EF4-4830-B459-990CB052A322}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2B214199-EBD2-4D33-8BEF-13FA99C3F378}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2B214199-EBD2-4D33-8BEF-13FA99C3F378}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2B214199-EBD2-4D33-8BEF-13FA99C3F378}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2B214199-EBD2-4D33-8BEF-13FA99C3F378}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9A305CDB-491E-4C39-84A5-B6D1196BC88F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9A305CDB-491E-4C39-84A5-B6D1196BC88F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9A305CDB-491E-4C39-84A5-B6D1196BC88F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9A305CDB-491E-4C39-84A5-B6D1196BC88F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
